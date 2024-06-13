@@ -3,7 +3,10 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   mode: "development",
-  entry: "/src/index.js",
+  entry: {
+    index: "/src/index.js",
+    login: "/src/login.js",
+  },
   output: {
     filename: "js/[name].js",
     path: path.resolve(__dirname, "./dist"),
@@ -36,10 +39,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: "login.html",
       template: "./src/login.html",
+      chunks: ["index"],
     }),
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
+      chunks: ["login"],
     }),
   ],
 };
