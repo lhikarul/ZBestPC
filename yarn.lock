@@ -515,6 +515,13 @@ flat@^5.0.2:
   resolved "https://registry.yarnpkg.com/flat/-/flat-5.0.2.tgz#8ca6fe332069ffa9d324c327198c598259ceb241"
   integrity sha512-b6suED+5/3rTpUBdG1gupIl8MPFCAMA0QXwmljLhvCUKcUvdE4gWky9zpuGCcXHOsz4J9wPGNWq6OKpmIzz3hQ==
 
+flexslider@^2.7.2:
+  version "2.7.2"
+  resolved "https://registry.yarnpkg.com/flexslider/-/flexslider-2.7.2.tgz#c0f4d36559b86feb8a3bc7d6a5abb9aa01bcf909"
+  integrity sha512-ayzD+g+zYPG+sM+LXyXbfm4gS4unLB0PGsjwIu03TeRNZ+JLQTtbV3J42VO9ooRZ9idmuWgR5s3r4hw6shS1tQ==
+  dependencies:
+    jquery ">=1.11.3"
+
 function-bind@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.2.tgz#2c02d864d97f3ea6c8830c464cbd11ab6eab7a1c"
@@ -631,6 +638,11 @@ jest-worker@^27.4.5:
     "@types/node" "*"
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
+
+jquery@>=1.11.3, jquery@^3.7.1:
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.7.1.tgz#083ef98927c9a6a74d05a6af02806566d16274de"
+  integrity sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg==
 
 json-parse-even-better-errors@^2.3.1:
   version "2.3.1"

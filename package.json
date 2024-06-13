@@ -15,5 +15,9 @@
     "style-loader": "^4.0.0",
     "webpack": "^5.92.0",
     "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "flexslider": "^2.7.2",
+    "jquery": "^3.7.1"
   }
 }
