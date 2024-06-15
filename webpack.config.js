@@ -3,9 +3,11 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = {
-  mode: "development",
+  mode: "production",
   entry: {
     index: "/src/index.js",
     login: "/src/login.js",
@@ -69,5 +71,14 @@ module.exports = {
     compress: true,
     port: 9000,
     hot: true,
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new UglifyJsPlugin({
+        sourceMap: true,
+      }),
+      new CssMinimizerPlugin(),
+    ],
   },
 };
