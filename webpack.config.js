@@ -7,7 +7,7 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = {
-  mode: "production",
+  mode: "development",
   entry: {
     index: "/src/index.js",
     login: "/src/login.js",
@@ -80,5 +80,17 @@ module.exports = {
       }),
       new CssMinimizerPlugin(),
     ],
+    splitChunks: {
+      minSize: 300 * 1024,
+      chunks: "all",
+      name: "common",
+      cacheGroups: {
+        jquery: {
+          name: "jquery",
+          test: /jquery/,
+          chunks: "all",
+        },
+      },
+    },
   },
 };
