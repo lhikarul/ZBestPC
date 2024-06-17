@@ -7,16 +7,17 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
-module.exports = {
+
+const config = {
   mode: "development",
   entry: {
-    index: path.resolve(__dirname, "../src/index.js"),
-    login: path.resolve(__dirname, "../src/login.js"),
+    index: path.resolve(__dirname, "../src/main.js"),
   },
   output: {
     filename: "js/[name].js",
     path: path.resolve(__dirname, "../dist"),
   },
+  plugins: [new CleanWebpackPlugin()],
   module: {
     rules: [
       {
@@ -42,37 +43,12 @@ module.exports = {
           esModule: false,
         },
       },
+      {
+        test: /\.vue$/,
+        loader: "vue-loader",
+      },
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      filename: "index.html",
-      template: "./src/index.html",
-      chunks: ["index"],
-    }),
-    new HtmlWebpackPlugin({
-      filename: "login.html",
-      template: "./src/login.html",
-      chunks: ["login"],
-    }),
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-    }),
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: path.resolve(__dirname, "../src/img"),
-          to: path.resolve(__dirname, "../dist/img"),
-        },
-      ],
-    }),
-    new MiniCssExtractPlugin({
-      filename: "css/[name].css",
-      chunkFilename: "css/[name].chunk.css",
-    }),
-    new CleanWebpackPlugin(),
-  ],
   devServer: {
     static: {
       directory: path.join(__dirname, "dist"),
@@ -102,4 +78,31 @@ module.exports = {
       },
     },
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: "index.html",
+      template: path.resolve(__dirname, "../public/index.html"),
+      chunks: ["index"],
+    }),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "../src/img"),
+          to: path.resolve(__dirname, "../dist/img"),
+        },
+      ],
+    }),
+    new MiniCssExtractPlugin({
+      filename: "css/[name].css",
+      chunkFilename: "css/[name].chunk.css",
+    }),
+    new CleanWebpackPlugin(),
+    new VueLoaderPlugin(),
+  ],
 };
+
+module.exports = config;
